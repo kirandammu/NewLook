@@ -12,7 +12,7 @@ import bannerRoute from './routes/bannerRoute.js'
 
 
 const app = express()
-const port = 'https://newlook-hmg8.onrender.com' || 4500
+const port =  4500
 const host = '0.0.0.0'
 
 //middlewares
