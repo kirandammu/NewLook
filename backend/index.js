@@ -12,7 +12,8 @@ import bannerRoute from './routes/bannerRoute.js'
 
 
 const app = express()
-const port =process.env.PORT || 4500
+const port = 'https://newlook-hmg8.onrender.com' || 4500
+const host = '0.0.0.0'
 
 //middlewares
 app.use(express.json())
@@ -32,4 +33,4 @@ app.use('/banner', bannerRoute)
 
 app.get('/', (req,res)=> res.send('<h1>Hello shopping world</h1>'))
 
-app.listen(port, ()=>console.log(`server is running at ${port}`))
+app.listen(port, host, ()=>console.log(`server is running at ${port}`))
