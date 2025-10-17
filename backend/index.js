@@ -19,7 +19,7 @@ const port = 5000
 //middlewares
 app.use(express.json())
 app.use(cookieParser())
-app.use(cors({origin:'https://sridevi.vercel.app', credentials:true}))
+app.use(cors({origin:'https://new-look-dammu.vercel.app', credentials:true}))
 
 //configurations
 connectDB()
