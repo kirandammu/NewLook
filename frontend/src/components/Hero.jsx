@@ -1,15 +1,16 @@
 import React, {useState, useEffect} from 'react'
 import { useAppContext } from '../context/Context';
+import { assets } from '../assets/assets';
 
 const Hero = () => {
 
   const {axios} = useAppContext()
-  const [banners, setBanners] = useState([])
+  const [banners, setBanners] = useState([assets.bigbanner])
 
 
   const getBanners =async ()=>{
     const {data} = await axios.get('/banner/get')
-    setBanners(data.banners.map(i=>i.image))
+    setBanners((prev)=>[prev,...data.banners.map(i=>i.image)])
   }
 
   useEffect(()=>{

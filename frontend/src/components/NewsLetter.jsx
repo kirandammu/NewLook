@@ -20,7 +20,7 @@ const NewsLetter = () => {
     
     return (
         <div className="flex flex-col items-center justify-center text-center space-y-2 mt-15">
-            <div className='flex justify-between items-center w-5xl'>
+            <div className='grid md:flex justify-between items-center md:w-5xl'>
                 {customersupport.map((news, i)=>{
                     return(
                         <div key={i} className='flex flex-col items-center justify-center gap-1 cursor-pointer'>
@@ -42,7 +42,7 @@ const NewsLetter = () => {
                     placeholder="Enter your email id"
                     required
                 />
-                <button type="submit" className=" px-8 h-full text-white bg-black hover:bg-gray-800 transition-all cursor-pointer rounded-md rounded-l-none">
+                <button type="submit" className=" px-8 h-full text-white bg-[red] hover:bg-red-600 transition-all cursor-pointer rounded-md rounded-l-none">
                     Subscribe
                 </button>
             </form>

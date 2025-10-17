@@ -56,7 +56,7 @@ const Product = () => {
             </p>
 
             <div className="flex flex-col md:flex-row justify-between gap-16 mt-4">
-                <div className="flex flex-col-reverse justify-center items-center  gap-3 w-1/2">
+                <div className="flex flex-col-reverse items-center  gap-3 w-1/2">
                     <div className="flex justify-between  gap-x-3 w-[360px] mx-auto ">
                         {pro?.images?.map((image, index) => (
                             <div key={index} onClick={() => setThumbnail(image)} className="border w-22 h-22 p-0.5 border-gray-100/30 rounded overflow-hidden flex items-center justify-center cursor-pointer" >
@@ -102,7 +102,7 @@ const Product = () => {
                         <button onClick={()=>{addToCart(pro._id)}} className="w-full flex items-center justify-center gap-3 py-2 cursor-pointer font-medium bg-gray-300 rounded-md text-black hover:bg-gray-200 transition" >
                            <FaCartPlus/> Add to Cart
                         </button>
-                        <button onClick={()=>{addToCart(pro._id); navigate('/cart'); scrollTo(0,0)}} className="w-full py-2 cursor-pointer font-medium bg-[#0ee50e] rounded-md text-white hover:bg-green-600 transition" >
+                        <button onClick={()=>{addToCart(pro._id); navigate('/cart'); scrollTo(0,0)}} className="w-full py-2 cursor-pointer font-medium bg-[red] rounded-md text-white hover:bg-green-600 transition" >
                             Buy now
                         </button>
                     </div>
@@ -116,7 +116,7 @@ const Product = () => {
         </div>
         <div>
 
-        <div className="w-5xl mx-auto py-6 ">
+        <div className="hidden md:block w-5xl mx-auto py-6 ">
             <div className="flex">
                 <p className='border border-gray-700 rounded-l p-1 px-2'><b>Description</b></p>
                 <p className='border border-gray-700 rounded-r p-1 px-2'>Reviews (122)</p>
@@ -129,7 +129,7 @@ const Product = () => {
 
             {/* ---------Related Products -------------- */}
         <Title text1={'related'} text2={'items'}/>
-      <div className='grid grid-cols-5'>{
+      <div className='grid gap-4 grid-cols-2 md:grid-cols-5'>{
             related.map((pro,i)=>{
                 return(
                 <Item key={i} product={pro}/>

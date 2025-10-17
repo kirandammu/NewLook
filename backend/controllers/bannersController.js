@@ -29,7 +29,7 @@ export const getBanners = async (req,res) => {
 export const deleteBanner = async (req,res)=>{
     try {
         const {id} = req.params
-        await Banner.findByIdAndDelete({id})
+        await Banner.findByIdAndDelete(id)
         res.json({success:true, message:'Banner Removed'})
     } catch (error) {
          res.json({success:false, message:error.message})

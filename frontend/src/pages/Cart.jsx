@@ -276,7 +276,7 @@ const placeOrder = async () => {
 
         <button
           onClick={placeOrder}
-          className="w-full py-3 mt-6 cursor-pointer bg-black text-white font-medium hover:bg-gray-900 rounded transition"
+          className="w-full py-3 mt-6 cursor-pointer bg-[red] text-white font-medium hover:bg-gray-900 rounded transition"
         >
           {paymentOption === "COD" ? "Place Order" : "Proceed to Checkout"}
         </button>

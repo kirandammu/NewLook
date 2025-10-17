@@ -11,7 +11,7 @@ const Discount = () => {
   return (
     <div>
         <Title text1={'Best'} text2={'Discount'}/>
-        <div className='flex flex-col gap-y-2 md:grid md:grid-cols-5 items-center justify-between '>
+        <div className='grid grid-cols-2 gap-y-2 md:grid md:grid-cols-5 items-center justify-between '>
         {products?.filter((product)=>(Math.floor(((product?.price-product?.offerPrice)/product?.price)*100)>30)).slice(0,5).map((product, index)=>{
           return(
           <div  key={index} >

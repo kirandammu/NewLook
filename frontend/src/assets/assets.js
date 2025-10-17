@@ -33,12 +33,7 @@ import men from './men.jpg'
 import women from './women.jpg'
 import boy from './boyy.png'
 import girl from './girll.png'
-import a1 from './a1.png'
-import a2 from './a2.png'
-import q1 from './q.png'
-import q2 from './q2.png'
-import z1 from './z1.png'
-import z2 from './z2.png'
+import bigbanner from './bigbanner.jpg'
 
 import shirt from './shirts.jpg'
 import saree from './saree.jpg'
@@ -79,7 +74,7 @@ export const assets = {
   contact,
   jbl_soundbox_image,
   md_controller_image,
-  boy, girl, a1, a2, q1, q2, z1, z2
+  boy, girl, bigbanner
 
 };
 
@@ -132,6 +127,7 @@ export const categoriess = [
   {text:'Women', path:'women', image:women},
   {text:'Boy', path:'boy', image:boy},
   {text:'Girl', path:'girl', image:girl},
+  {text:'Interior', path:'other', image:girl},
 ]
 
 export const subCategoriess = [

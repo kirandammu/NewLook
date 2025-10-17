@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
 axios.defaults.withCredentials = true;
-axios.defaults.baseURL = 'http://localhost:4500'
+axios.defaults.baseURL = 'https://newlook-hmg8.onrender.com'
 
 export const AppContext = createContext(null);
 
@@ -15,9 +15,17 @@ export const AppContextProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [cartItems, setCartItems] = useState({});
   const [search, setSearch] = useState("");
+  const [categorys, setCategorys] = useState([])
+  
+  
+    const getCategorys =async ()=>{
+      const {data} = await axios.get('/category/get')
+      setCategorys(data.Categorys)
+    }
 
   
   const fetchUser = async () => {
+    setUser(null)
         try {
             // withCredentials is already set on the axios instance
             const { data } = await axios.get("/user/islogin");
@@ -119,6 +127,7 @@ export const AppContextProvider = ({ children }) => {
   useEffect(() => {
     fetchProducts();
     fetchUser();
+    getCategorys()
   }, []);
 
 
@@ -161,6 +170,7 @@ export const AppContextProvider = ({ children }) => {
     logout, 
     seller,
     setSeller,
+    categorys, setCategorys, getCategorys
   };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };

@@ -9,15 +9,16 @@ import cloudinaryConnect from './config/cloudinary.js'
 import addressRoute from './routes/addressRoute.js'
 import OrderRoute from './routes/orderRoute.js'
 import bannerRoute from './routes/bannerRoute.js'
+import categoryRoute from './routes/categoryRoute.js'
 
 
 const app = express()
-const port =process.env.PORT || 4500
+const port = 4500
 
 //middlewares
 app.use(express.json())
 app.use(cookieParser())
-app.use(cors({origin:'https://new-look-dammu.vercel.app', credentials:true}))
+app.use(cors({origin:'https://sridevi.vercel.app', credentials:true}))
 
 //configurations
 connectDB()
@@ -29,6 +30,7 @@ app.use('/product', productRoute)
 app.use('/address', addressRoute)
 app.use('/order', OrderRoute)
 app.use('/banner', bannerRoute)
+app.use('/category', categoryRoute)
 
 app.get('/', (req,res)=> res.send('<h1>Hello shopping world</h1>'))
 

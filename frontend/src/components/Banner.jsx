@@ -17,7 +17,7 @@ const Banner = () => {
         <p className="max-w-[343px] font-medium text-black">
           From immersive sound to precise controls—everything you need to win
         </p>
-        <button className="group flex items-center justify-center gap-1 px-12 py-2.5 bg-[#0ee50e] rounded text-white">
+        <button className="group flex items-center justify-center gap-1 px-12 py-2.5 bg-[red] rounded text-white">
           Explore More
         </button>
       </div>

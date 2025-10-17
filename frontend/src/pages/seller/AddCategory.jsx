@@ -6,29 +6,24 @@ import toast from "react-hot-toast";
 import Title from "../../components/Title";
 
 
-const BannersData = () => {
-    const { axios } = useAppContext();
+const AddCategory = () => {
+    const { axios, categorys, getCategorys } = useAppContext();
     const [image, setImage] = useState(false);
+    const [name, setName] = useState('')
     const [loading, setLoading] = useState(false);
-    const [banners, setBanners] = useState([])
-  
-  
-    const getBanners =async ()=>{
-      const {data} = await axios.get('/banner/get')
-      setBanners(data.banners)
-    }
 
-    const removeBanner = async (id)=>{
-        const {data} = await axios.post(`/banner/delete/${id}`)
+
+    const removeCategory = async (id)=>{
+        const {data} = await axios.post(`/category/delete/${id}`)
         if (data.success) {
             toast.success(data.message)
-            getBanners()
+            getCategorys()
         }
     }
     
     useEffect(()=>{
-      getBanners()
-      removeBanner()
+      getCategorys()
+      removeCategory()
     },[])
 
 
@@ -43,16 +38,18 @@ const BannersData = () => {
       // For example, if your backend expects the file under the key 'image', use 'image'
       // If your backend expects a different key, change 'image' to match
       formData.append('image', image);
+      formData.append('name', name);
 
       // Send the FormData object with Axios
-      const { data } = await axios.post('/banner/add', formData);
+      const { data } = await axios.post('/category/add', formData);
       console.log(data);
 
       if (data.success) {
         toast.success(data.message);
         setImage(false);
+        setName('');
         setLoading(false);
-        getBanners()
+        getCategorys()
       } else {
         toast.error(data.message || "Failed to upload image.");
         setLoading(false);
@@ -72,7 +69,7 @@ const BannersData = () => {
           className="md:p-10 p-4 space-y-5 max-w-lg"
         >
           <div className="flex flex-col">
-            <p>Upload Image</p>
+            <p>Category Image</p>
             <label htmlFor="image">
               <img
                 src={image ? URL.createObjectURL(image) : assets.upload_area}
@@ -88,6 +85,9 @@ const BannersData = () => {
               required
             />
           </div>
+          <div className="flex flex-col gap-1 w-80">
+                    <label className="text-base font-medium" htmlFor="product-name">Category Name</label>
+                    <input onChange={(e)=>setName(e.target.value)} value={name} id="product-name" type="text" placeholder="Type here" className="outline-none p-1.5 px-3 rounded border border-gray-500/40" required />                </div>
           <button
             type="submit"
             className="px-12 py-1.5 cursor-pointer bg-[red] text-white font-medium rounded"
@@ -101,13 +101,14 @@ const BannersData = () => {
           </button>
         </form>
         <div>
-            <Title text1={'all'} text2={'banners'}/>
-            <div className="w-4xl mx-auto gap-4 flex flex-col items-center ">
-                {banners.map((item)=>{
+            <Title text1={'All'} text2={'Categories'}/>
+            <div className="w-4xl mx-auto gap-4 flex flex-wrap p-10 items-center ">
+                {categorys?.map((item)=>{
                     return (
-                        <div key={item._id} className="w-3xl relative">
-                            <img src={item.image} alt="" className="w-3xl rounded-2xl" />
-                            <button onClick={()=>removeBanner(item._id)} className="cursor-pointer bg-white text-[red] border-[red] border px-2 p-1 rounded absolute top-2 right-3">delete</button>
+                        <div key={item._id} className="w-40 h-48 relative">
+                            <img src={item.image} alt="" className="w-40 h-44 p-2 rounded-2xl" />
+                            <p className="text-center font-semibold">{item.name}</p>
+                            <button onClick={()=>removeCategory(item._id)} className="cursor-pointer bg-white text-[red] border-[red] border px-2 p-1 rounded absolute top-2 right-3">X</button>
                         </div>
                     )
                 })}
@@ -118,4 +119,4 @@ const BannersData = () => {
   );
 };
 
-export default BannersData;
+export default AddCategory;

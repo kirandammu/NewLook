@@ -20,8 +20,8 @@ const ProductList = () => {
             <div className="w-full md:p-10 p-4">
                 <div className='flex items-center justify-start gap-2 p-4'>
               <p className='w-8 h-0.5 bg-gray-700'></p>
-              <div className='font-semibold text-md uppercase text-[#0ee50e]'>All <span className='text-black'>products</span></div>
-              <p className='w-8 h-0.5 bg-[#0ee50e]'></p>
+              <div className='font-semibold text-md uppercase text-[red]'>All <span className='text-black'>products</span></div>
+              <p className='w-8 h-0.5 bg-[red]'></p>
             </div>
                 <div className="flex flex-col items-center max-w-4xl w-full overflow-hidden rounded-md bg-white border border-gray-500/20">
                     <table className="md:table-auto table-fixed w-full overflow-hidden">

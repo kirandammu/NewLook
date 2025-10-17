@@ -9,7 +9,7 @@ const BestSeller = () => {
   return (
     <div>
         <Title text1={'latest'} text2={'collections'} /> 
-        <div className='flex flex-col gap-y-4 md:grid md:grid-cols-5 items-center justify-between '>
+        <div className='grid grid-cols-2 gap-y-4 md:grid md:grid-cols-5 items-center justify-between '>
         {products?.filter((product)=>product).slice(0,10).map((product, index)=>{
           return(
           <div  key={index} >

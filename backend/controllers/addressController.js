@@ -26,7 +26,7 @@ export const getAddress = async (req,res) => {
 export const deleteAddress = async (req,res)=>{
     try {
         const {id} = req.params
-        await Address.findByIdAndDelete({_id:id})
+        await Address.findByIdAndDelete(id)
         res.json({success:true, message:'Address Removed'})
 
 

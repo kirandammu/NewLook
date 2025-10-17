@@ -6,7 +6,7 @@ import Pagination from '../components/Pagination'
 import { categoriess, subCategoriess } from '../assets/assets'
 
 const AllProducts = () => {
-    const {products, search} = useAppContext()
+    const {products, search, categorys} = useAppContext()
     const [filterProducts, setFilterProducts] = useState([])
     const [sortType,setSortType] = useState('Relavent')
     const [category,setCategory ] = useState([]);
@@ -86,16 +86,16 @@ const AllProducts = () => {
   return (
     <div>
       <Title text1={'all'} text2={'collections'}/>
-      <div className='flex w-6xl gap-4'>
-        <div className='w-1/5 h-fit sticky top-40 '>
+      <div className='flex flex-col md:flex-row w-6xl gap-4'>
+        <div className='w-fit md:w-1/5 h-fit md:sticky top-40 '>
             <div className='flex items-center justify-start gap-2 p-4'>
               <p className='w-8 h-0.5 bg-gray-700'></p>
-              <div className='font-semibold text-md uppercase text-[#0ee50e]'>filter <span className='text-black'>items</span></div>
-              <p className='w-8 h-0.5 bg-[#0ee50e]'></p>
+              <div className='font-semibold text-md uppercase text-[red]'>filter <span className='text-black'>items</span></div>
+              <p className='w-8 h-0.5 bg-[red]'></p>
             </div>
         <div className='mb-4 mr-6'>
           <label>Price Range:  ₹{priceRange[0]}- ₹{priceRange[1]}</label>
-          <input type="range" min='0' max='50000' value={priceRange[1]} onChange={(e)=>setPriceRange([priceRange[0],Number(e.target.value)])} className='w-full accent-[#0ee50e]' />
+          <input type="range" min='0' max='50000' value={priceRange[1]} onChange={(e)=>setPriceRange([priceRange[0],Number(e.target.value)])} className='w-full accent-[red]' />
         </div>
         <div className="subcategory">
           <h3 className=' font-semibold'>CATEGORY</h3>
@@ -103,13 +103,13 @@ const AllProducts = () => {
         </div>
         <div className="subcategory">
           <h3 className='pt-3 font-semibold'>TYPE</h3>
-          {subCategoriess.map((item,i)=><p key={i} className='flex gap-1.5'><input type="checkbox" value={item.text} id={item.text} onChange={toggleSubCategory}/><label htmlFor={item.text}>{item.text}</label></p>)}
+          {categorys.map((item,i)=><p key={i} className='flex gap-1.5'><input type="checkbox" value={item.name} id={item.name} onChange={toggleSubCategory}/><label htmlFor={item.name}>{item.name}</label></p>)}
           </div>
         </div>
-        <div className='w-4/5'>
+        <div className='md:w-4/5'>
           
       
-      <Pagination items={filterProducts} itemsPerPage={8} setSortType={setSortType}/>
+      <Pagination items={filterProducts} itemsPerPage={12} setSortType={setSortType}/>
         </div>
       </div>
     </div>

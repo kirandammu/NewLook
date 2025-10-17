@@ -5,7 +5,7 @@ import { AiOutlineLoading } from 'react-icons/ai';
 import { useAppContext } from '../../context/Context';
 
 const AddProduct = () => {
-    const { axios } = useAppContext()
+    const { axios , categorys} = useAppContext()
     const [files, setFiles] = useState([])
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
@@ -98,8 +98,8 @@ const AddProduct = () => {
                     <label className="text-base font-medium" htmlFor="subCategory">SubCategory</label>
                     <select id="subCategory" onChange={(e)=>setsubCategory(e.target.value)} value={subCategory} className="outline-none py-2 px-3 rounded border border-gray-500/40">
                         <option value="">Select SubCategory</option>
-                       {subCategoriess.map((item, index)=>(
-                        <option key={index} value={item.text}>{item.text}</option>
+                       {categorys.map((item, index)=>(
+                        <option key={index} value={item.name}>{item.name}</option>
                        ))}
                     </select>
                 </div>
@@ -116,7 +116,7 @@ const AddProduct = () => {
                 </div>
                 <button 
                     type="submit" 
-                    className="px-12 py-1.5 cursor-pointer bg-[#0ee50e] text-white font-medium rounded"
+                    className="px-12 py-1.5 cursor-pointer bg-[red] text-white font-medium rounded"
                     disabled={loading}
                 >
                     {loading ? <AiOutlineLoading className='text-xl font-bold animate-spin'/>: 'ADD'}

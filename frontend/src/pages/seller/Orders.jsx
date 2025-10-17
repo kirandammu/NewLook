@@ -35,8 +35,8 @@ const Orders = () => {
     <div className="md:p-10 p-4 space-y-4">
       <div className='flex items-center justify-start gap-2 p-4'>
               <p className='w-8 h-0.5 bg-gray-700'></p>
-              <div className='font-semibold text-md uppercase text-[#0ee50e]'>Orders <span className='text-black'>List</span></div>
-              <p className='w-8 h-0.5 bg-[#0ee50e]'></p>
+              <div className='font-semibold text-md uppercase text-[red]'>Orders <span className='text-black'>List</span></div>
+              <p className='w-8 h-0.5 bg-[red]'></p>
             </div>
       {orders.map((order, index) =>{
         console.log(order)

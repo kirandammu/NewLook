@@ -19,6 +19,7 @@ import MyOrders from './pages/MyOrders'
 import Verify from './pages/Verify'
 import BannersData from './pages/seller/BannersData'
 import ProductSubCategory from './pages/productSubCategory'
+import AddCategory from './pages/seller/AddCategory'
 
 const App = () => {
   
@@ -47,6 +48,7 @@ const App = () => {
           <Route path='/seller' element={seller ?<Seller/>: <Navigate to={'/'}/>}>
               <Route index element={seller? <AddProduct/>: null}/>
               <Route path='banners' element={<BannersData/>}/>
+              <Route path='category' element={<AddCategory/>}/>
               <Route path='list' element={<ProductList/>}/>
               <Route path='orders' element={<Orders/>}/>   
           </Route>

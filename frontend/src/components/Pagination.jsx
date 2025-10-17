@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Item from './Item';
 
-const Pagination = ({ items = [], itemsPerPage = 8 , setSortType}) => {
+const Pagination = ({ items = [], itemsPerPage = 12 , setSortType}) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [currentItems, setCurrentItems] = useState([]);
@@ -51,7 +51,7 @@ const Pagination = ({ items = [], itemsPerPage = 8 , setSortType}) => {
   }
 
   return (
-    <div className="pagination-container">
+    <div className=" w-96 md:w-full">
       <div className='flex justify-between items-center mx-6 mb-4'>
         <div className="text-sm text-gray-700">
         Showing {((currentPage - 1) * itemsPerPage) + 1} to{' '}
@@ -65,7 +65,7 @@ const Pagination = ({ items = [], itemsPerPage = 8 , setSortType}) => {
               </select>
             </div>
       {/* Display current items */}
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 gap-y-2 md:grid md:grid-cols-4 items-center justify-between">
         {currentItems.map((product, index) => (
             <div key={index}>
                       <Item product={product}/>
@@ -74,59 +74,9 @@ const Pagination = ({ items = [], itemsPerPage = 8 , setSortType}) => {
         ))}
       </div>
       
-      {/* Pagination controls */}
-      {/* <div className="pagination-controls">
-        <button 
-          onClick={() => handlePageChange(1)} 
-          disabled={currentPage === 1}
-          className="pagination-btn"
-        >
-          &laquo; First
-        </button>
-        
-        <button 
-          onClick={() => handlePageChange(currentPage - 1)} 
-          disabled={currentPage === 1}
-          className="pagination-btn"
-        >
-          &lsaquo; Previous
-        </button>
-        
-        {getPageNumbers().map(pageNumber => (
-          <button
-            key={pageNumber}
-            onClick={() => handlePageChange(pageNumber)}
-            className={`pagination-btn ${currentPage === pageNumber ? 'active' : ''}`}
-          >
-            {pageNumber}
-          </button>
-        ))}
-        
-        <button 
-          onClick={() => handlePageChange(currentPage + 1)} 
-          disabled={currentPage === totalPages}
-          className="pagination-btn"
-        >
-          Next &rsaquo;
-        </button>
-        
-        <button 
-          onClick={() => handlePageChange(totalPages)} 
-          disabled={currentPage === totalPages}
-          className="pagination-btn"
-        >
-          Last &raquo;
-        </button>
-      </div> */}
+
       
       <div className="flex text-sm justify-center gap-2 mt-8 flex-wrap">
-        {/* <button
-          onClick={() => handlePageChange(1)}
-          disabled={currentPage === 1}
-          className="px-3 py-1 border rounded bg-white text-gray-700 hover:bg-gray-100 disabled:opacity-50"
-        >
-          « First
-        </button> */}
 
         <button
           onClick={() => handlePageChange(currentPage - 1)}
@@ -142,7 +92,7 @@ const Pagination = ({ items = [], itemsPerPage = 8 , setSortType}) => {
             onClick={() => handlePageChange(pageNumber)}
             className={`px-3 py-1 border border-gray-300 rounded ${
               currentPage === pageNumber
-                ? "bg-[#0ee50e] text-white border-[#0ee50e] shadow-black shadow"
+                ? "bg-[red] text-white border-[red] shadow-black shadow"
                 : "bg-white text-gray-700 hover:bg-gray-100"
             }`}
           >
@@ -158,13 +108,6 @@ const Pagination = ({ items = [], itemsPerPage = 8 , setSortType}) => {
           Next ›
         </button>
 
-        {/* <button
-          onClick={() => handlePageChange(totalPages)}
-          disabled={currentPage === totalPages}
-          className="px-3 py-1 border rounded bg-white text-gray-700 hover:bg-gray-100 disabled:opacity-50"
-        >
-          Last »
-        </button> */}
       </div>
 
       
