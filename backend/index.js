@@ -35,4 +35,4 @@ app.use('/category', categoryRoute)
 
 app.get('/', (req,res)=> res.send('<h1>Hello shopping world</h1>'))
 
-app.listen(port, host, ()=>console.log(`server is running at ${port}`))
+app.listen(port, ()=>console.log(`server is running at ${port}`))
